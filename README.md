@@ -29,8 +29,11 @@ I use the following Kaggle dataset for this work: https://www.kaggle.com/mlg-ulb
 
 With any complex problem, it is imperative to be able to draw accurate and well-reasoned comparisons between different solutions in order to aptly measure their relative performance. To this end, it is worth spending time to discuss the imbalanced nature of CC fraud and how it affects our metrics. 
 
+Classification accuracy, though perhaps the most commonly used ML metric, won't suffice with imabalnced data. Consider the case of a "dumb" classifier that always inferred a sample belongs to the majority class - with our dataset it would be >99% accurate! 
 
+To properly compare and report the performance of our models, I chose to use confusion matrices. A confusion matrix is a 2x2 grid holding 4 statistics: true positives, true negatives, false positives, false negatives. As a fraud classifier, we should penalize false negatives (i.e. transactions that are classified as legitimate but are actually fraud). A false positive (real transaction marked fake) could be brushed off as a superflous alert to customers that could be easily rectified with user input. Precision and recall statistics incorporate the confusion matrix data and represent them as percentages, and we will use them as our main metrics for the CC fraud detector.
 
+Lastly, to aid in comprehension, I provide a nice plot of the confusion matrix. The bottom left corner and top right corner hold the counts of false negatives and false positives respectively.
 
 #### The Outcomes 
 
