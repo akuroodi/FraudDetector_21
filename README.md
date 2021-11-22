@@ -33,7 +33,7 @@ Classification accuracy, though perhaps the most commonly used ML metric, won't 
 
 For a fraud classifier, we should minimize false negatives as much as possible (i.e. transactions that are classified as legitimate but are actually fraud). We can use a variant of the F1 score (which equally considers and consolidates precision and recall into one score) for this problem. The F-beta score allows us to configure beta to give more weight to either precision or recall (standard F1 score has a beta of 1). 
 
-Since recall is not concerned with false positives (see Confusion Matrix for further explanation), we will use a higher beta to skew our metric towards recall. Thus, the F2 measure is most appropriate for fraud detection. 
+Since recall is not concerned with false positives (see [Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix) for further explanation), we will use a higher beta to skew our metric towards recall. Thus, the F2 measure is most appropriate for fraud detection. 
 
 #### The Outcomes 
  
