@@ -36,6 +36,11 @@ For a fraud classifier, we should minimize false negatives as much as possible (
 Since recall is not concerned with false positives (see Confusion Matrix for further explanation), we will use a higher beta to skew our metric towards recall. Thus, the F2 measure is most appropriate for fraud detection. 
 
 #### The Outcomes 
-
-It shouldn't come as a huge surprise that DNNs can perform well in the binary classification task of CC fraud detection. As structured for my project, the CC data is already in hand and we simply construct a model of minimal complexity to get decent inference results - this is the classic supervised learning problem that DNNs thrive off of. 
  
+I have implemented an artifical neural net in Keras composed of 4 dense layers with 1 dropout layer sandwiched in between to control overfitting. All dense layers use a ReLU activation layer. ReLU, or Rectified Linear Units, are SOTA for non-linear activation functions. They are fast to compute and solve the "vanishing gradient" problem (i.e. information loss) that can occur in deep neural nets that use gradient descent as an optimizer. The model's final output layer uses the Sigmoid activation function due to it's saturating behevaior at either class extremes (i.e. snaps to either 0 or 1, which is suitable for binary classification). 
+
+Approach 1, as titled in the Jupyter Notebook, acheived an F2 score of ~0.79. This is far from ideal though still signficantly accurate for a 4-layer model that pays no attention to data imabalance we need to solve. 
+
+The second approach takes advantage of minority oversampling to equalize the class distribution and allow the model to have more training examples for fraudulent transactions. We use the SMOTE (Synthetic Minority Oversampmling Technique) from sklearn to augment the data prior to fitting it to the same model from Approach 1. 
+
+With SMOTE, we are able to reach a near-perfect F2 score of 0.99, aptly demonstrating the advantage of smart minority oversampling to handle an imbalanced dataset. 
