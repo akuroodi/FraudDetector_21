@@ -31,11 +31,9 @@ With any complex problem, it is imperative to be able to draw accurate and well-
 
 Classification accuracy, though perhaps the most commonly used ML metric, won't suffice with imabalnced data. Consider the case of a "dumb" classifier that always inferred a sample belongs to the majority class - with our dataset it would be >99% accurate! 
 
-To properly compare and report the performance of our models, I chose to use confusion matrices. A confusion matrix is a 2x2 grid holding 4 statistics: true positives, true negatives, false positives, false negatives. As a fraud classifier, we should penalize false negatives (i.e. transactions that are classified as legitimate but are actually fraud). This can be accmoplished via the F2 Score metric.
+For a fraud classifier, we should minimize false negatives as much as possible (i.e. transactions that are classified as legitimate but are actually fraud). We can use a variant of the F1 score (which equally considers and consolidates precision and recall into one score) for this problem. The F-beta score allows us to configure beta to give more weight to either precision or recall (standard F1 score has a beta of 1). 
 
-A false positive (real transaction marked fake) could be brushed off as a superflous alert to customers that could be easily rectified with user input. Precision and recall statistics incorporate the confusion matrix data and represent them as percentages, and we will use them along with F2 as our main metrics for the CC fraud detector.s
-
-Lastly, to aid in comprehension, I provide a nice plot of the confusion matrix. The bottom left corner and top right corner hold the counts of false negatives and false positives respectively.
+Since recall is not concerned with false positives (see Confusion Matrix for further explanation), we will use a higher beta to skew our metric towards recall. Thus, the F2 measure is most appropriate for fraud detection. 
 
 #### The Outcomes 
 
